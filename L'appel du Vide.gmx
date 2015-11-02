@@ -17,7 +17,6 @@
   </scripts>
   <objects name="objects">
     <object>objects\oPlayer</object>
-    <object>objects\object6</object>
     <object>objects\oPlant1</object>
     <object>objects\oPlant2</object>
     <object>objects\oWall</object>
@@ -28,7 +27,7 @@
     <room>rooms\room1</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41885.1571736227</constant>
+    <constant name="GM_build_date">41884.6865344097</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

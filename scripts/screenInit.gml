@@ -6,10 +6,10 @@ screen_h = 240;
 screen_scale = 4;
 
 // create a surface for the whole screen to be drawn on
-global.screen = surface_create(screen_w, screen_h);
+screen = surface_create(screen_w, screen_h);
 
 // this will destroy the screen object if surfaces are not supported on the graphics card, reverting to the viewport method
-if global.screen = -1
+if screen = -1
 {
     instance_destroy();
 }
