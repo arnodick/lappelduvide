@@ -19,16 +19,19 @@
     <object>objects\oPlayer</object>
     <object>objects\object6</object>
     <object>objects\oPlant1</object>
+    <object>objects\oBlocky</object>
     <object>objects\oPlant2</object>
     <object>objects\oWall</object>
     <object>objects\oScreen</object>
+    <object>objects\oCreature</object>
+    <object>objects\oGame</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room2</room>
     <room>rooms\room1</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41886.0875324537</constant>
+    <constant name="GM_build_date">41888.0384412037</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

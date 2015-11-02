@@ -2,7 +2,7 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -25,18 +25,28 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-/*
-srfPlayer = surface_create(4, 4);
+            <string>vel = 0.01;
+maxVel = 0.6;
+vspeed = -maxVel;
+if keyboard_check(vk_left) and hspeed &lt;= maxVel
+{
+    hspeed += vel;
+}
 
-surface_set_target(srfPlayer);
-    draw_clear(0);
-    draw_set_colour(c_red);
-    //draw_rectangle(x, y, x + 2, y + 2, false);
-    draw_circle(x+2, y+2, 2, false);
-surface_reset_target();
-*/
-count = 0;
+else if keyboard_check(vk_right) and hspeed &gt;= -maxVel
+{
+    hspeed -= vel;
+}
+
+if keyboard_check(vk_down) and vspeed &gt;= -maxVel
+{
+    vspeed -= vel;
+}
+
+else if keyboard_check(vk_up) and vspeed &lt;= maxVel
+{
+    vspeed += vel;
+}
 </string>
           </argument>
         </arguments>
@@ -59,45 +69,62 @@ count = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (random (10) &lt; 1) and count == 15 and keyboard_check (vk_anykey) == true
+            <string>if keyboard_check(vk_left) and hspeed &lt;= maxVel
 {
-    instance_create (x - room_width/2, irandom(room_height), oBlocky);
-    instance_create (x + room_width/2, irandom(room_height), oBlocky);
-    instance_create (irandom(room_width), y - room_height/2, oBlocky);
-    instance_create (irandom(room_width), y + room_height/2, oBlocky);
-    count = 0;
+    hspeed += vel;
 }
-else if count &lt; 15
+
+else if keyboard_check(vk_right) and hspeed &gt;= -maxVel
 {
-    count += 1;
+    hspeed -= vel;
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>surface_set_target(global.screen);
-    draw_set_colour(c_red);
-    //draw_rectangle(x, y, x + 2, y + 2, false);
-    draw_circle(x + global.scale, y + global.scale, global.scale, false);
-surface_reset_target();
+
+else if hspeed &gt; 0
+{
+    hspeed -= vel;
+    if hspeed &lt; 0
+    {
+        hspeed = 0;
+    }
+}
+
+else if hspeed &lt; 0
+{
+    hspeed += vel;
+    if hspeed &gt; 0
+    {
+        hspeed = 0;
+    }
+}
+
+if keyboard_check(vk_down) and vspeed &gt;= -maxVel
+{
+    vspeed -= vel;
+}
+
+else if keyboard_check(vk_up) and vspeed &lt;= maxVel
+{
+    vspeed += vel;
+}
+/*
+else if vspeed &gt; maxVel
+{
+    vspeed -= vel;
+    if vspeed &lt; 0
+    {
+        vspeed = 0;
+    }
+}
+*/
+else if vspeed &lt; -maxVel
+{
+    vspeed += vel;
+    if vspeed &gt; 0
+    {
+        vspeed = 0;
+    }
+}
+
 </string>
           </argument>
         </arguments>

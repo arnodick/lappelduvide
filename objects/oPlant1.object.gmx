@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>oCreature</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>body = instance_create (x, y - 8*global.scale, oPlant2)
+            <string>event_inherited();
+body = instance_create (x, y - 4*global.scale, oPlant2)
 sway = 1;
 swayvel = 0.1;
 </string>
