@@ -29,8 +29,8 @@
 instance_create (0, 0, oTitle);
 count = 0;
 countDown = 5000;
-depthCount = 0;
-bgcol = make_colour_hsv(120, 255, depthCount);
+global.depthCount = 0;
+bgcol = make_colour_hsv(120, 255, global.depthCount);
 </string>
           </argument>
         </arguments>
@@ -78,11 +78,7 @@ if global.start == true
     {
         countDown -= 1;
     }
-    depthCount += 10;
-    if depthCount == 10000
-    {
-        instance_create (0, 0, oFade);
-    }
+    global.depthCount += 10;
 }
 
 instance_deactivate_region(0, 0, room_width, room_height, false, true);

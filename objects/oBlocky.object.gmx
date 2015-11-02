@@ -73,6 +73,11 @@ if ( collision_circle (x, y, global.scale + size, oPlayer, false, true) or colli
         num += 1;
     }
 }
+
+if global.depthCount &gt; 10000 and fade &gt; 0
+{
+    fade -= 1;
+}
 </string>
           </argument>
         </arguments>
@@ -96,8 +101,10 @@ if ( collision_circle (x, y, global.scale + size, oPlayer, false, true) or colli
           <argument>
             <kind>1</kind>
             <string>surface_set_target(global.screen);
+    make_colour_hsv(irandom(64) + 128, 255, fade);
     draw_set_colour(col);
     //draw_rectangle(x, y, x + 2, y + 2, false);
+    //draw_set_alpha(global.fade);
     draw_circle(x, y, global.scale + size, false);
 surface_reset_target();
 </string>

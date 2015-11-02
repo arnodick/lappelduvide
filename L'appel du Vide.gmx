@@ -32,14 +32,13 @@
     <object>objects\oGame</object>
     <object>objects\object9</object>
     <object>objects\oTitle</object>
-    <object>objects\oFade</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room2</room>
     <room>rooms\room1</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41894.2070018866</constant>
+    <constant name="GM_build_date">41894.5886904514</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

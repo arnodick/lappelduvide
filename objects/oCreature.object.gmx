@@ -36,7 +36,9 @@ decel = 0.0035;
 vspeed = -maxVspeed;
 hspeed =  0;
 
-col = make_colour_hsv(irandom(64) + 128, 255, irandom(255));
+fade = irandom(255);
+
+col = make_colour_hsv(irandom(64) + 128, 255, fade);
 </string>
           </argument>
         </arguments>
