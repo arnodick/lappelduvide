@@ -26,6 +26,83 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
+velAdd = random(0.4) - 0.2;
+size = random (1) - 0.5;
+//hspeed = velAdd;
+if colour_get_value(col) &lt; 127
+{
+    depth = 1000;
+    maxHspeed = 0.1;
+}
+else
+{
+    depth = 0;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>event_inherited();
+/*
+
+if random (10) &lt; 1
+{
+    if velAdd &lt; 0 and hspeed &gt; -maxHspeed
+    {
+        hspeed -= velAdd;
+    }
+    else if velAdd &gt; 0 and hspeed &lt; maxHspeed
+    {
+        hspeed += velAdd;
+    }
+}
+
+if keyboard_check(vk_left) and hspeed &lt;= maxVel
+{
+    hspeed += vel;
+}
+
+else if keyboard_check(vk_right) and hspeed &gt;= -maxVel
+{
+    hspeed -= vel;
+}
+
+else if hspeed &gt; 0
+{
+    hspeed -= vel;
+    if hspeed &lt; 0
+    {
+        hspeed = 0;
+    }
+}
+
+else if hspeed &lt; 0
+{
+    hspeed += vel;
+    if hspeed &gt; 0
+    {
+        hspeed = 0;
+    }
+}
+*/
 </string>
           </argument>
         </arguments>
@@ -49,9 +126,9 @@
           <argument>
             <kind>1</kind>
             <string>surface_set_target(global.screen);
-    draw_set_colour(c_purple);
+    draw_set_colour(col);
     //draw_rectangle(x, y, x + 2, y + 2, false);
-    draw_circle(x + global.scale, y + global.scale, global.scale, false);
+    draw_circle(x + global.scale, y + global.scale, global.scale + size, false);
 surface_reset_target();
 </string>
           </argument>

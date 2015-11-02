@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>500</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -37,6 +37,7 @@ surface_set_target(srfPlayer);
 surface_reset_target();
 */
 count = 0;
+col = make_colour_hsv(c_red, 255, 128);
 </string>
           </argument>
         </arguments>
@@ -59,19 +60,7 @@ count = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (random (10) &lt; 1) and count == 15 and keyboard_check (vk_anykey) == true
-{
-    instance_create (x - room_width/2, irandom(room_height), oBlocky);
-    instance_create (x + room_width/2, irandom(room_height), oBlocky);
-    instance_create (irandom(room_width), y - room_height/2, oBlocky);
-    instance_create (irandom(room_width), y + room_height/2, oBlocky);
-    count = 0;
-}
-else if count &lt; 15
-{
-    count += 1;
-}
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>
@@ -94,7 +83,7 @@ else if count &lt; 15
           <argument>
             <kind>1</kind>
             <string>surface_set_target(global.screen);
-    draw_set_colour(c_red);
+    draw_set_colour(col);
     //draw_rectangle(x, y, x + 2, y + 2, false);
     draw_circle(x + global.scale, y + global.scale, global.scale, false);
 surface_reset_target();

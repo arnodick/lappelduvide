@@ -25,28 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vel = 0.01;
-maxVel = 0.6;
-vspeed = -maxVel;
-if keyboard_check(vk_left) and hspeed &lt;= maxVel
-{
-    hspeed += vel;
-}
+            <string>VVel = 0.001
+maxVspeed = 0.2;
 
-else if keyboard_check(vk_right) and hspeed &gt;= -maxVel
-{
-    hspeed -= vel;
-}
+HVel = 0.03;
+maxHspeed = 0.6;
 
-if keyboard_check(vk_down) and vspeed &gt;= -maxVel
-{
-    vspeed -= vel;
-}
+decel = 0.001;
 
-else if keyboard_check(vk_up) and vspeed &lt;= maxVel
-{
-    vspeed += vel;
-}
+vspeed = -maxVspeed;
+hspeed =  0;
+
+col = make_colour_hsv(irandom(64) + 128, 255, irandom(255));
 </string>
           </argument>
         </arguments>
@@ -69,19 +59,83 @@ else if keyboard_check(vk_up) and vspeed &lt;= maxVel
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if keyboard_check(vk_left) and hspeed &lt;= maxVel
+            <string>/*
+if y &gt; room_height * 3 / 4
 {
-    hspeed += vel;
+    HVel = 0.03;
+    maxHspeed = 0.5;
+}
+else if y &gt; room_height * 2 / 4
+{
+    HVel = 0.1;
+    maxHspeed = 0.45;
 }
 
-else if keyboard_check(vk_right) and hspeed &gt;= -maxVel
+else 
+{ 
+    HVel = 0.02;
+    maxHspeed = 0.3;
+}
+
+if y &gt; room_height * 3 / 4
 {
-    hspeed -= vel;
+    HVel = -0.01;
+    maxHspeed = 0.45;
+}
+*/
+
+if y &lt; room_height
+{
+    HVel = 0.03;
+    maxHspeed = 0.5;
+}
+if y &lt; room_height * 3 / 4
+{
+    HVel = 0.01;
+    maxHspeed = 0.4;
+}
+if y &lt; room_height / 3 
+{ 
+    HVel = 0.02;
+    maxHspeed = 0.2;
+}
+
+if colour_get_value (col) &lt; 128
+{
+    maxHspeed = 0.19;
+}
+if colour_get_value (col) &lt; 64
+{
+    maxHspeed = 0.18;
+}
+
+/*
+else if y &gt; room_height / 4 
+{
+    HVel = 0.01;
+    maxHspeed = 0.45;
+}
+
+else if y &gt; room_height * 3 / 4 
+{ 
+    HVel = 0.03;
+    maxHspeed = 0.6;
+}
+*/
+
+if keyboard_check(vk_left) and hspeed &lt; maxHspeed
+{
+    hspeed += HVel;
+}
+
+else if keyboard_check(vk_right) and hspeed &gt; -maxHspeed
+{
+    hspeed -= HVel;
 }
 
 else if hspeed &gt; 0
 {
-    hspeed -= vel;
+    hspeed -= decel;
     if hspeed &lt; 0
     {
         hspeed = 0;
@@ -90,41 +144,26 @@ else if hspeed &gt; 0
 
 else if hspeed &lt; 0
 {
-    hspeed += vel;
+    hspeed += decel;
     if hspeed &gt; 0
     {
         hspeed = 0;
     }
 }
 
-if keyboard_check(vk_down) and vspeed &gt;= -maxVel
+if hspeed == 0
 {
-    vspeed -= vel;
+    hspeed += velAdd;
 }
 
-else if keyboard_check(vk_up) and vspeed &lt;= maxVel
+if keyboard_check (vk_up) and vspeed &lt; -0.1
 {
-    vspeed += vel;
+    vspeed += VVel;
 }
-/*
-else if vspeed &gt; maxVel
+else if vspeed &gt; -maxVspeed
 {
-    vspeed -= vel;
-    if vspeed &lt; 0
-    {
-        vspeed = 0;
-    }
+    vspeed -= VVel;
 }
-*/
-else if vspeed &lt; -maxVel
-{
-    vspeed += vel;
-    if vspeed &gt; 0
-    {
-        vspeed = 0;
-    }
-}
-
 </string>
           </argument>
         </arguments>
