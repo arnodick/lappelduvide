@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>2000</depth>
+  <depth>600</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,12 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create (room_width/2, room_height/2, oPlayer);
-instance_create (0, 0, oTitle);
-count = 0;
-countDown = 5000;
-depthCount = 0;
-bgcol = make_colour_hsv(120, 255, depthCount);
+            <string>move = 0;
+global.start = false;
 </string>
           </argument>
         </arguments>
@@ -53,41 +49,19 @@ bgcol = make_colour_hsv(120, 255, depthCount);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if keyboard_check_pressed(vk_escape) 
+            <string>if keyboard_check_pressed (vk_anykey)
 {
-    game_end();
+    global.start = true;
+}
+else if global.start == true
+{
+    move += 2;
 }
 
-if global.start == true
+if move &gt; room_height
 {
-    if (random (10) &lt; 2) and count &gt;= countDown / 100
-    {
-        instance_create (irandom(room_width), room_height, oBlocky);
-        if keyboard_check(vk_left or vk_right)
-        {
-            instance_create (0, irandom(room_height), oBlocky);
-            instance_create (room_width, irandom(room_height), oBlocky);
-        }
-        count = 0;
-    }
-    else if count &lt; countDown / 100
-    {
-        count += 1;
-    }
-    if countDown &gt; 0
-    {
-        countDown -= 1;
-    }
-    depthCount += 10;
-    if depthCount == 10000
-    {
-        instance_create (0, 0, oFade);
-    }
+    instance_destroy();
 }
-
-instance_deactivate_region(0, 0, room_width, room_height, false, true);
-instance_activate_region(view_xview[0], view_yview[0], view_wview[0], view_hview[0], true);
-
 </string>
           </argument>
         </arguments>
@@ -111,11 +85,15 @@ instance_activate_region(view_xview[0], view_yview[0], view_wview[0], view_hview
           <argument>
             <kind>1</kind>
             <string>surface_set_target(global.screen);
-    bgcol = make_colour_hsv(110, 220, countDown / 50);
-    draw_set_colour(bgcol);
-    draw_rectangle(0, 0, room_width, room_height, false);
-    //draw_set_colour(c_red);
-    //draw_rectangle(0, room_height - 11, 10, room_height-1, false);
+    col = make_colour_hsv(160, 210, 255);
+    draw_set_colour(col);
+    draw_rectangle(0, 0 - move, room_width, room_height - move, false);
+    draw_set_colour(c_red);
+    draw_set_font(fontTitle);
+    if global.start == false
+    {
+        draw_text(10, 10, "L'APPEL DU VIDE");
+    }
 surface_reset_target();
 </string>
           </argument>

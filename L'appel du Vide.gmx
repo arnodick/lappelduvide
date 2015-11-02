@@ -7,6 +7,7 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\sWall</sprite>
+    <sprite>sprites\sPlayer</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -15,23 +16,30 @@
     <script>scripts\screenBegin.gml</script>
     <script>scripts\screenEnd.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fontTitle</font>
+  </fonts>
   <objects name="objects">
     <object>objects\oPlayer</object>
     <object>objects\object6</object>
     <object>objects\oPlant1</object>
     <object>objects\oBlocky</object>
+    <object>objects\oBlockybaby</object>
     <object>objects\oPlant2</object>
     <object>objects\oWall</object>
     <object>objects\oScreen</object>
     <object>objects\oCreature</object>
     <object>objects\oGame</object>
+    <object>objects\object9</object>
+    <object>objects\oTitle</object>
+    <object>objects\oFade</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room2</room>
     <room>rooms\room1</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41889.1373168519</constant>
+    <constant name="GM_build_date">41894.2070018866</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

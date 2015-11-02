@@ -28,6 +28,8 @@
             <string>event_inherited();
 velAdd = random(0.4) - 0.2;
 size = random (1) - 0.5;
+babies = random (9) + 3;
+num = 0;
 //hspeed = velAdd;
 if colour_get_value(col) &lt; 127
 {
@@ -36,7 +38,7 @@ if colour_get_value(col) &lt; 127
 }
 else
 {
-    depth = 0;
+    depth = 1;
 }
 </string>
           </argument>
@@ -61,48 +63,16 @@ else
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-/*
 
-if random (10) &lt; 1
+if ( collision_circle (x, y, global.scale + size, oPlayer, false, true) or collision_circle (x, y, global.scale + size, oBlockybaby, false, true) ) and depth == 1
 {
-    if velAdd &lt; 0 and hspeed &gt; -maxHspeed
+    instance_destroy();
+    while num &lt; babies
     {
-        hspeed -= velAdd;
-    }
-    else if velAdd &gt; 0 and hspeed &lt; maxHspeed
-    {
-        hspeed += velAdd;
+        instance_create (x, y, oBlockybaby);
+        num += 1;
     }
 }
-
-if keyboard_check(vk_left) and hspeed &lt;= maxVel
-{
-    hspeed += vel;
-}
-
-else if keyboard_check(vk_right) and hspeed &gt;= -maxVel
-{
-    hspeed -= vel;
-}
-
-else if hspeed &gt; 0
-{
-    hspeed -= vel;
-    if hspeed &lt; 0
-    {
-        hspeed = 0;
-    }
-}
-
-else if hspeed &lt; 0
-{
-    hspeed += vel;
-    if hspeed &gt; 0
-    {
-        hspeed = 0;
-    }
-}
-*/
 </string>
           </argument>
         </arguments>
@@ -128,7 +98,7 @@ else if hspeed &lt; 0
             <string>surface_set_target(global.screen);
     draw_set_colour(col);
     //draw_rectangle(x, y, x + 2, y + 2, false);
-    draw_circle(x + global.scale, y + global.scale, global.scale + size, false);
+    draw_circle(x, y, global.scale + size, false);
 surface_reset_target();
 </string>
           </argument>

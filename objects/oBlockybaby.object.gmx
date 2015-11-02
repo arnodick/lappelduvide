@@ -3,9 +3,9 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>2000</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>oCreature</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,12 +25,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create (room_width/2, room_height/2, oPlayer);
-instance_create (0, 0, oTitle);
-count = 0;
-countDown = 5000;
-depthCount = 0;
-bgcol = make_colour_hsv(120, 255, depthCount);
+            <string>event_inherited();
+hspeed = random (0.8) - 0.4;
+vspeed = random (0.6) - 0.3;
+
+velAdd = random(0.4) - 0.2;
+size = random (0.5) - 0.25;
+col = make_colour_hsv(irandom(63) + 192, 255, irandom(255));
+//hspeed = velAdd;
+if colour_get_value(col) &lt; 127
+{
+    depth = 1000;
+    maxHspeed = 0.1;
+}
+else
+{
+    depth = 1;
+}
 </string>
           </argument>
         </arguments>
@@ -53,41 +64,7 @@ bgcol = make_colour_hsv(120, 255, depthCount);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if keyboard_check_pressed(vk_escape) 
-{
-    game_end();
-}
-
-if global.start == true
-{
-    if (random (10) &lt; 2) and count &gt;= countDown / 100
-    {
-        instance_create (irandom(room_width), room_height, oBlocky);
-        if keyboard_check(vk_left or vk_right)
-        {
-            instance_create (0, irandom(room_height), oBlocky);
-            instance_create (room_width, irandom(room_height), oBlocky);
-        }
-        count = 0;
-    }
-    else if count &lt; countDown / 100
-    {
-        count += 1;
-    }
-    if countDown &gt; 0
-    {
-        countDown -= 1;
-    }
-    depthCount += 10;
-    if depthCount == 10000
-    {
-        instance_create (0, 0, oFade);
-    }
-}
-
-instance_deactivate_region(0, 0, room_width, room_height, false, true);
-instance_activate_region(view_xview[0], view_yview[0], view_wview[0], view_hview[0], true);
-
+            <string>event_inherited();
 </string>
           </argument>
         </arguments>
@@ -111,11 +88,9 @@ instance_activate_region(view_xview[0], view_yview[0], view_wview[0], view_hview
           <argument>
             <kind>1</kind>
             <string>surface_set_target(global.screen);
-    bgcol = make_colour_hsv(110, 220, countDown / 50);
-    draw_set_colour(bgcol);
-    draw_rectangle(0, 0, room_width, room_height, false);
-    //draw_set_colour(c_red);
-    //draw_rectangle(0, room_height - 11, 10, room_height-1, false);
+    draw_set_colour(col);
+    //draw_rectangle(x, y, x + 2, y + 2, false);
+    draw_circle(x, y, global.scale + size, false);
 surface_reset_target();
 </string>
           </argument>

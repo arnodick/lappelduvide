@@ -29,9 +29,9 @@
 maxVspeed = 0.2;
 
 HVel = 0.03;
-maxHspeed = 0.6;
+maxHspeed = 0.4;
 
-decel = 0.001;
+decel = 0.0035;
 
 vspeed = -maxVspeed;
 hspeed =  0;
@@ -59,69 +59,46 @@ col = make_colour_hsv(irandom(64) + 128, 255, irandom(255));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
-if y &gt; room_height * 3 / 4
+            <string>if y &lt; room_height
 {
-    HVel = 0.03;
-    maxHspeed = 0.5;
-}
-else if y &gt; room_height * 2 / 4
-{
-    HVel = 0.1;
-    maxHspeed = 0.45;
-}
-
-else 
-{ 
-    HVel = 0.02;
-    maxHspeed = 0.3;
-}
-
-if y &gt; room_height * 3 / 4
-{
-    HVel = -0.01;
-    maxHspeed = 0.45;
-}
-*/
-
-if y &lt; room_height
-{
-    HVel = 0.03;
-    maxHspeed = 0.5;
+    HVel = 0.04;
+    maxHspeed = 0.4;
+    if colour_get_value (col) &lt; 128
+    {
+        maxHspeed = 0.25;
+    }
+    if colour_get_value (col) &lt; 64
+    {
+        maxHspeed = 0.27;
+    }
 }
 if y &lt; room_height * 3 / 4
 {
-    HVel = 0.01;
-    maxHspeed = 0.4;
+    HVel = 0.02;
+    maxHspeed = 0.3;
+    if colour_get_value (col) &lt; 128
+    {
+        maxHspeed = 0.15;
+    }
+    if colour_get_value (col) &lt; 64
+    {
+        maxHspeed = 0.17;
+    }
 }
 if y &lt; room_height / 3 
 { 
-    HVel = 0.02;
-    maxHspeed = 0.2;
-}
-
-if colour_get_value (col) &lt; 128
-{
-    maxHspeed = 0.19;
-}
-if colour_get_value (col) &lt; 64
-{
-    maxHspeed = 0.18;
-}
-
-/*
-else if y &gt; room_height / 4 
-{
-    HVel = 0.01;
-    maxHspeed = 0.45;
-}
-
-else if y &gt; room_height * 3 / 4 
-{ 
     HVel = 0.03;
-    maxHspeed = 0.6;
+    maxHspeed = 0.2;
+    if colour_get_value (col) &lt; 128
+    {
+        maxHspeed = 0.05;
+    }
+    if colour_get_value (col) &lt; 64
+    {
+        maxHspeed = 0.07;
+    }
 }
-*/
+
 
 if keyboard_check(vk_left) and hspeed &lt; maxHspeed
 {
