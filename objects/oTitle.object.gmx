@@ -51,7 +51,7 @@ audio_play_sound (sWind, 2, true);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if keyboard_check_pressed (vk_anykey)
+            <string>if keyboard_check_pressed (vk_up) or keyboard_check_pressed (vk_down) or keyboard_check_pressed (vk_left) or keyboard_check_pressed (vk_right) or keyboard_check_pressed (vk_space)
 {
     global.start = true;
 }

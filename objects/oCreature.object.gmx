@@ -97,47 +97,49 @@ if y &lt; room_height / 3
     }
 }
 
-
-if keyboard_check(vk_left) and hspeed &lt; maxHspeed
+if global.depthCount &lt; global.finale
 {
-    hspeed += HVel;
-}
-
-else if keyboard_check(vk_right) and hspeed &gt; -maxHspeed
-{
-    hspeed -= HVel;
-}
-
-else if hspeed &gt; 0
-{
-    hspeed -= decel;
-    if hspeed &lt; 0
+    if keyboard_check(vk_left) and hspeed &lt; maxHspeed
     {
-        hspeed = 0;
+        hspeed += HVel;
     }
-}
-
-else if hspeed &lt; 0
-{
-    hspeed += decel;
-    if hspeed &gt; 0
+    
+    else if keyboard_check(vk_right) and hspeed &gt; -maxHspeed
     {
-        hspeed = 0;
+        hspeed -= HVel;
     }
-}
-
-if hspeed == 0
-{
-    hspeed += velAdd;
-}
-
-if keyboard_check (vk_up) and vspeed &lt; -0.1
-{
-    vspeed += VVel;
-}
-else if vspeed &gt; -maxVspeed
-{
-    vspeed -= VVel;
+    
+    else if hspeed &gt; 0
+    {
+        hspeed -= decel;
+        if hspeed &lt; 0
+        {
+            hspeed = 0;
+        }
+    }
+    
+    else if hspeed &lt; 0
+    {
+        hspeed += decel;
+        if hspeed &gt; 0
+        {
+            hspeed = 0;
+        }
+    }
+    
+    if hspeed == 0
+    {
+        hspeed += velAdd;
+    }
+    
+    if keyboard_check (vk_up) and vspeed &lt; -0.1
+    {
+        vspeed += VVel;
+    }
+    else if vspeed &gt; -maxVspeed
+    {
+        vspeed -= VVel;
+    }
 }
 
 if global.depthCount &gt; global.mid
