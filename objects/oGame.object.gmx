@@ -60,7 +60,7 @@ bgcol = make_colour_hsv(120, 255, global.depthCount);
 
 if global.start == true
 {
-    if (random (10) &lt; 2) and count &gt;= countDown / 100
+    if (random (10) &lt; 3) and count &gt;= countDown / 100
     {
         instance_create (irandom(room_width), room_height, oBlocky);
         if keyboard_check(vk_left or vk_right)
@@ -78,7 +78,7 @@ if global.start == true
     {
         countDown -= 1;
     }
-    global.depthCount += 10;
+    global.depthCount += 1;
 }
 
 instance_deactivate_region(0, 0, room_width, room_height, false, true);

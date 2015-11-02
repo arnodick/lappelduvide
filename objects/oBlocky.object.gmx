@@ -30,6 +30,12 @@ velAdd = random(0.4) - 0.2;
 size = random (1) - 0.5;
 babies = random (9) + 3;
 num = 0;
+
+fade = irandom(255);
+hue = irandom(64) + 128;
+
+col = make_colour_hsv(hue, 255, fade);
+
 //hspeed = velAdd;
 if colour_get_value(col) &lt; 127
 {
@@ -74,9 +80,10 @@ if ( collision_circle (x, y, global.scale + size, oPlayer, false, true) or colli
     }
 }
 
-if global.depthCount &gt; 10000 and fade &gt; 0
+if global.depthCount &gt; 6000 and fade &gt; 0
 {
     fade -= 1;
+    col = make_colour_hsv(hue, 255, fade);
 }
 </string>
           </argument>
@@ -101,7 +108,6 @@ if global.depthCount &gt; 10000 and fade &gt; 0
           <argument>
             <kind>1</kind>
             <string>surface_set_target(global.screen);
-    make_colour_hsv(irandom(64) + 128, 255, fade);
     draw_set_colour(col);
     //draw_rectangle(x, y, x + 2, y + 2, false);
     //draw_set_alpha(global.fade);
