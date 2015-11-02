@@ -25,11 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>body = instance_create (x, y + 8, oPlant2)
+            <string>body = instance_create (x, y - 32*global.scale, oPlant2)
 sway = 1;
 swayvel = 0.1;
-
-srfPlant = surface_create(2, 2);
 </string>
           </argument>
         </arguments>
@@ -52,8 +50,7 @@ srfPlant = surface_create(2, 2);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
-if ! ( collision_circle( x, y, 8, oPlayer, false, true ) or collision_circle( body.x, body.y, 8, oPlayer, false, true ) )
+            <string>if ! ( collision_circle( x, y, 32*global.scale, oPlayer, false, true ) or collision_circle( body.x, body.y, 32*global.scale, oPlayer, false, true ) )
 {
     sway += swayvel;
     hspeed = sway;
@@ -69,6 +66,7 @@ else
     y = body.y + (oPlayer.y - body.y) / 2;
 }
 
+/*
 else
 {
     x = body.x;
@@ -79,22 +77,6 @@ if (oPlayer.x &gt; body.x - 16 and oPlayer.x &lt; body.x + 16)
     x = oPlayer.x;
 }
 */
-
-if !surface_exists(srfPlant)
-{
-    srfPlant = surface_create(2, 2);
-}
-else
-{   
-    surface_set_target(srfPlant);
-    
-    draw_set_colour(c_blue);
-    draw_rectangle(x, y, x + 2, y + 2, false);
-    
-    surface_reset_target();
-    
-    draw_surface(srfPlant, x, y);
-}
 </string>
           </argument>
         </arguments>
@@ -117,28 +99,11 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//draw_set_colour(c_blue);
-//draw_rectangle(x, y, x + 1, y + 1, false);
-/*
-if !surface_exists(srfPlant)
-{
-    srfPlant = surface_create(2, 2);
-}
-else
-{   
-    surface_set_target(srfPlant);
-    
-    draw_set_colour(c_red);
-    draw_rectangle(x, y, x + 2, y + 2, false);
-    //draw_line_width_colour(x, y, body.x, body.y, 2, c_blue, c_purple);
-    surface_reset_target();
-    
-    draw_surface(srfPlant, x, y);
-}
-
-*/
-
-draw_surface(srfPlant, x, y);
+            <string>surface_set_target(global.screen);
+    draw_set_colour(c_purple);
+    //draw_rectangle(x, y, x + 2, y + 2, false);
+    draw_line_width_colour(x, y, body.x, body.y, 2*global.scale, c_blue, c_purple);
+surface_reset_target();
 </string>
           </argument>
         </arguments>

@@ -152,7 +152,7 @@ else if vspeed &lt; 0
     draw_set_colour(c_blue);
     //draw_rectangle(x, y, x + 2, y + 2, false);
     //draw_circle(x+2, y+2, 2, false);
-    draw_triangle(x - 10, y, x + 10, y, x, y + 10, false);
+    draw_triangle(x - global.scale, y, x + global.scale, y, x, y + global.scale, false);
 surface_reset_target();
 </string>
           </argument>
