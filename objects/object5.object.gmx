@@ -27,14 +27,105 @@
             <kind>1</kind>
             <string>vel = 0.5;
 maxVel = 3;
-srfPlayer = surface_create(2, 2);
- 
+srfPlayer = surface_create(4, 4);
+
 surface_set_target(srfPlayer);
-    draw_set_colour(c_blue);
-    draw_rectangle(x, y, x + 2, y + 2, false);
+    draw_clear(0);
+    draw_set_colour(c_red);
+    //draw_rectangle(x, y, x + 2, y + 2, false);
+    draw_circle(x+2, y+2, 2, false);
 surface_reset_target();
-    
-draw_surface(srfPlayer, x, y);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//if !collision_point (x + 1, y, oWall, false, true)
+/*
+else if collision_point (x, y, oWall, false, true)
+{
+    hspeed = 0;
+}
+
+
+// the vel * 2 makes pixels vibrate. could be interesting for making something grab and shake you
+else if hspeed &lt; 0
+{
+    hspeed += vel*2;
+}
+*/
+if keyboard_check(vk_right) and hspeed &lt;= maxVel
+{
+    hspeed += vel;
+}
+
+else if keyboard_check(vk_left) and hspeed &gt;= -maxVel
+{
+    hspeed -= vel;
+}
+
+else if hspeed &gt; 0
+{
+    hspeed -= vel;
+    if hspeed &lt; 0
+    {
+        hspeed = 0;
+    }
+}
+
+else if hspeed &lt; 0
+{
+    hspeed += vel;
+    if hspeed &gt; 0
+    {
+        hspeed = 0;
+    }
+}
+
+if keyboard_check(vk_up) and vspeed &gt;= -maxVel
+{
+    vspeed -= vel;
+}
+
+else if keyboard_check(vk_down) and vspeed &lt;= maxVel
+{
+    vspeed += vel;
+}
+
+else if vspeed &gt; 0
+{
+    vspeed -= vel;
+    if vspeed &lt; 0
+    {
+        vspeed = 0;
+    }
+}
+
+else if vspeed &lt; 0
+{
+    vspeed += vel;
+    if vspeed &gt; 0
+    {
+        vspeed = 0;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -57,7 +148,20 @@ draw_surface(srfPlayer, x, y);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_surface(srfPlayer, x, y);
+            <string>if !surface_exists(srfPlayer)
+{
+    surface_set_target(srfPlayer);
+        draw_clear(0);
+        draw_set_colour(c_red);
+        //draw_rectangle(x, y, x + 2, y + 2, false);
+        draw_circle(x+2, y+2, 2, false);
+    surface_reset_target();
+}
+else
+{   
+    draw_clear(0);
+    draw_surface(srfPlayer, x, y);
+}
 </string>
           </argument>
         </arguments>
