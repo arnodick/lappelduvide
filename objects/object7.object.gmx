@@ -25,16 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vel = 0.5;
-maxVel = 3;
-srfPlayer = surface_create(2, 2);
- 
-surface_set_target(srfPlayer);
+            <string>srf = surface_create(4, 4);
+
+surface_set_target(srf);
+    draw_clear(0);
     draw_set_colour(c_blue);
-    draw_rectangle(x, y, x + 2, y + 2, false);
+    draw_rectangle(x, y, x + 4, y + 4, false);
 surface_reset_target();
-    
-draw_surface(srfPlayer, x, y);
 </string>
           </argument>
         </arguments>
@@ -57,7 +54,10 @@ draw_surface(srfPlayer, x, y);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_surface(srfPlayer, x, y);
+            <string>
+draw_clear(0);
+draw_surface(srf, x, y);
+
 </string>
           </argument>
         </arguments>

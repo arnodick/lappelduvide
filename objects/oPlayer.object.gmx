@@ -28,6 +28,12 @@
             <string>vel = 0.5;
 maxVel = 3;
 srfPlayer = surface_create(2, 2);
+
+surface_set_target(srfPlayer);
+    draw_clear(0);
+    draw_set_colour(c_red);
+    draw_rectangle(x, y, x + 2, y + 2, false);
+surface_reset_target();
 </string>
           </argument>
         </arguments>
@@ -64,7 +70,6 @@ else if hspeed &lt; 0
     hspeed += vel*2;
 }
 */
-
 if keyboard_check(vk_right) and hspeed &lt;= maxVel
 {
     hspeed += vel;
@@ -145,16 +150,14 @@ else if vspeed &lt; 0
             <string>if !surface_exists(srfPlayer)
 {
     srfPlayer = surface_create(2, 2);
+    surface_set_target(srfPlayer);
+        draw_set_colour(c_red);
+        draw_rectangle(x, y, x + 2, y + 2, false);
+    surface_reset_target();
 }
 else
 {   
-    surface_set_target(srfPlayer);
-    
-    draw_set_colour(c_red);
-    draw_rectangle(x, y, x + 2, y + 2, false);
-    
-    surface_reset_target();
-    
+    draw_clear(0);
     draw_surface(srfPlayer, x, y);
 }
 </string>

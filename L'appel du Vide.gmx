@@ -12,7 +12,7 @@
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\oPlayer</object>
-    <object>objects\object5</object>
+    <object>objects\object7</object>
     <object>objects\oPlant1</object>
     <object>objects\oPlant2</object>
     <object>objects\oWall</object>
@@ -22,7 +22,7 @@
     <room>rooms\room1</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41884.2164590741</constant>
+    <constant name="GM_build_date">41884.2513472454</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>
