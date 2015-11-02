@@ -140,14 +140,9 @@ else if vspeed &gt; -maxVspeed
     vspeed -= VVel;
 }
 
-if global.depthCount &gt; 7500 and vspeed &gt; 0
+if global.depthCount &gt; 7500 and vspeed != 0
 {
-    vspeed -= 0.01;
-}
-
-else if global.depthCount &gt; 7500 and vspeed &lt; 0
-{
-    vspeed += 0.01;
+    vspeed = 0;
 }
 </string>
           </argument>

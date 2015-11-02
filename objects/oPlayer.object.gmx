@@ -25,21 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-/*
-srfPlayer = surface_create(4, 4);
-
-surface_set_target(srfPlayer);
-    draw_clear(0);
-    draw_set_colour(c_red);
-    //draw_rectangle(x, y, x + 2, y + 2, false);
-    draw_circle(x+2, y+2, 2, false);
-surface_reset_target();
-*/
-fade = 128;
-count = 0;
-col = make_colour_hsv(c_red, 255, fade);
+            <string>//count = 0;
 rot = 0;
+col = make_colour_hsv(c_red, 255, 128);
 </string>
           </argument>
         </arguments>
@@ -110,8 +98,6 @@ if global.depthCount &gt; 7500
             <kind>1</kind>
             <string>surface_set_target(global.screen);
     draw_set_colour(col);
-    //draw_rectangle(x, y, x + 2, y + 2, false);
-    //draw_circle(x + global.scale, y + global.scale, global.scale, false);
     draw_sprite_ext( sprite_index, 0, x, y, 1, 1, rot, c_white, 1 );
 surface_reset_target();
 </string>

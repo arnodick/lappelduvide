@@ -26,8 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>move = 0;
-global.start = false;
 count = 0;
+global.start = false;
+audio_play_sound (sWind, 2, true);
 </string>
           </argument>
         </arguments>
@@ -61,6 +62,11 @@ else if global.start == true
     {
         move += 2;
     }
+}
+if move == room_height/2
+{
+    audio_stop_sound(sWind);
+    audio_play_sound(sSplash, 3, false);
 }
 
 if move &gt; room_height

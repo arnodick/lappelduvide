@@ -4,9 +4,12 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\sPop</sound>
+    <sound>sound\sWind</sound>
+    <sound>sound\sSplash</sound>
+  </sounds>
   <sprites name="sprites">
-    <sprite>sprites\sWall</sprite>
     <sprite>sprites\sPlayer</sprite>
   </sprites>
   <backgrounds name="background"/>
@@ -21,27 +24,21 @@
   </fonts>
   <objects name="objects">
     <object>objects\oPlayer</object>
-    <object>objects\object6</object>
-    <object>objects\oPlant1</object>
     <object>objects\oBlocky</object>
     <object>objects\oBlockybaby</object>
-    <object>objects\oPlant2</object>
-    <object>objects\oWall</object>
     <object>objects\oScreen</object>
     <object>objects\oCreature</object>
     <object>objects\oGame</object>
-    <object>objects\object9</object>
     <object>objects\oTitle</object>
     <object>objects\oEndtitle</object>
     <object>objects\oCloud</object>
     <object>objects\oCloud2</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room2</room>
-    <room>rooms\room1</room>
+    <room>rooms\rLevel</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41896.577561875</constant>
+    <constant name="GM_build_date">41896.7316706366</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>
