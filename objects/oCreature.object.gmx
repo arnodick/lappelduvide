@@ -140,7 +140,12 @@ else if vspeed &gt; -maxVspeed
     vspeed -= VVel;
 }
 
-if global.depthCount &gt; 7500 and vspeed != 0
+if global.depthCount &gt; global.mid
+{
+    maxVspeed = 0.1;
+}
+
+if global.depthCount &gt; global.finale and vspeed != 0
 {
     vspeed = 0;
 }

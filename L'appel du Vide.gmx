@@ -12,7 +12,9 @@
   <sprites name="sprites">
     <sprite>sprites\sPlayer</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\background0</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\screenInit.gml</script>
@@ -38,8 +40,8 @@
     <room>rooms\rLevel</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41896.7464351968</constant>
-    <constant name="GM_version">'1.0.0.0'</constant>
+    <constant name="GM_build_date">41906.6034770139</constant>
+    <constant name="GM_version">'1.0.1'</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

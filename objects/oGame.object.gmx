@@ -31,6 +31,8 @@ count = 0;
 countDown = 5000;
 global.depthCount = 0;
 global.scale = 2;
+global.mid = 7000;
+global.finale = 8500;
 bgcol = make_colour_hsv(120, 255, global.depthCount);
 </string>
           </argument>
@@ -69,7 +71,7 @@ if global.start == false
 
 else
 {
-    if (random (10) &lt; 3) and count &gt;= countDown / 100 and global.depthCount &lt; 7500 and global.depthCount &gt; 200
+    if (random (10) &lt; 3) and count &gt;= countDown / 100 and global.depthCount &lt; global.finale and global.depthCount &gt; 200
     {
         instance_create (irandom(room_width), room_height, oBlocky);
         if keyboard_check(vk_left or vk_right)
