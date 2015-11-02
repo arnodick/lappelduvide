@@ -30,7 +30,7 @@ instance_create (0, 0, oTitle);
 count = 0;
 countDown = 5000;
 global.depthCount = 0;
-global.scale = 2;
+global.scale = 3;
 global.mid = 7000;
 global.finale = 8000;
 bgcol = make_colour_hsv(120, 255, global.depthCount);

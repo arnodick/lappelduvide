@@ -1,5 +1,5 @@
 // screen base(view_wview and view_hview)
-screen_scale = 4;
+//screen_scale = 4;
 
 // create a surface for the whole screen to be drawn on
 global.screen = surface_create(view_wview[0], view_hview[0]);
