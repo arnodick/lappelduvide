@@ -32,13 +32,16 @@
     <object>objects\oGame</object>
     <object>objects\object9</object>
     <object>objects\oTitle</object>
+    <object>objects\oEndtitle</object>
+    <object>objects\oCloud</object>
+    <object>objects\oCloud2</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room2</room>
     <room>rooms\room1</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41895.6746120718</constant>
+    <constant name="GM_build_date">41896.577561875</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

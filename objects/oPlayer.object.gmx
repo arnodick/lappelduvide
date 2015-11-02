@@ -36,8 +36,9 @@ surface_set_target(srfPlayer);
     draw_circle(x+2, y+2, 2, false);
 surface_reset_target();
 */
+fade = 128;
 count = 0;
-col = make_colour_hsv(c_red, 255, 128);
+col = make_colour_hsv(c_red, 255, fade);
 rot = 0;
 </string>
           </argument>
@@ -79,6 +80,11 @@ else if keyboard_check(vk_down) == true and rot &lt; 180
 else if keyboard_check(vk_up) == true and rot &gt; 0
 {
     rot -= 45;
+}
+
+if global.depthCount &gt; 7500
+{
+    vspeed = 0.2;
 }
 </string>
           </argument>

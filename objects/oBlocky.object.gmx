@@ -80,7 +80,7 @@ if ( collision_circle (x, y, global.scale + size, oPlayer, false, true) or colli
     }
 }
 
-if global.depthCount &gt; 6000 and fade &gt; 0
+if global.depthCount &gt; 6500 and fade &gt; 0
 {
     fade -= 1;
     col = make_colour_hsv(hue, 255, fade);
