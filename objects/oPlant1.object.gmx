@@ -62,17 +62,15 @@ if ! ( collision_circle( x, y, 16*global.scale, oPlayer, false, true ) or collis
 }
 */
 
-if ( collision_circle( x, y, 16*global.scale, oPlayer, false, true ) or collision_circle( body.x, body.y, 16*global.scale, oPlayer, false, true ) )
+if collision_circle( x, y, 16*global.scale, oPlayer, false, true )
 {
     x = body.x + (oPlayer.x - body.x) / 2;
     y = body.y + (oPlayer.y - body.y) / 2;
-    sway = sway*2;
-    swayvel = swayvel*2
 }
 
 sway += swayvel;
 hspeed = sway;
-if (sway &lt; -1 or sway &gt; 1)
+if (sway &lt; -4 or sway &gt; 4)
 {
     swayvel = -swayvel;
 }
