@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>body = instance_create (x, y - 32*global.scale, oPlant2)
+            <string>body = instance_create (x, y - 8*global.scale, oPlant2)
 sway = 1;
 swayvel = 0.1;
 </string>

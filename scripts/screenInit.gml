@@ -1,8 +1,8 @@
 // screen base(view_wview and view_hview)
 screen_x = 0;
 screen_y = 0;
-screen_w = 320;
-screen_h = 240;
+screen_w = 160;
+screen_h = 120;
 screen_scale = 4;
 
 // create a surface for the whole screen to be drawn on
