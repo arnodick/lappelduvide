@@ -25,8 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//count = 0;
-rot = 0;
+            <string>rot = 0;
 col = make_colour_hsv(c_red, 255, 128);
 </string>
           </argument>
