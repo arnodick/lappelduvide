@@ -10,19 +10,25 @@
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\screenInit.gml</script>
+    <script>scripts\screenBegin.gml</script>
+    <script>scripts\screenEnd.gml</script>
+  </scripts>
   <objects name="objects">
     <object>objects\oPlayer</object>
     <object>objects\object7</object>
     <object>objects\oPlant1</object>
     <object>objects\oPlant2</object>
     <object>objects\oWall</object>
+    <object>objects\oScreen</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room2</room>
     <room>rooms\room1</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41884.2513472454</constant>
+    <constant name="GM_build_date">41884.6504413773</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>
