@@ -25,11 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>surface_set_target(global.screen);
-    draw_set_colour(c_red);
-    draw_set_font(fontTitle);
-    draw_text(10, 10, "L'APPEL DU VIDE");
-surface_reset_target();
+            <string>///Draw
+draw_text_colour(10, 10, "L'APPEL DU VIDE", c_red, c_red, c_red, c_red, 1);
 </string>
           </argument>
         </arguments>

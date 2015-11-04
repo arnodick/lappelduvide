@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>VVel = 0.001
+            <string>///Inits
+VVel = 0.001
 maxVspeed = 0.2;
 
 HVel = 0.03;
@@ -57,97 +58,98 @@ hspeed =  0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; room_height
+            <string>///Controller
+if (y &lt; room_height)
 {
     HVel = 0.04;
     maxHspeed = 0.4;
-    if colour_get_value (col) &lt; 128
+    if (colour_get_value(colour) &lt; 128)
     {
         maxHspeed = 0.25;
     }
-    if colour_get_value (col) &lt; 64
+    if (colour_get_value(colour) &lt; 64)
     {
         maxHspeed = 0.27;
     }
 }
-if y &lt; room_height * 3 / 4
+if ( y &lt; (room_height * (3/4)) )
 {
     HVel = 0.02;
     maxHspeed = 0.3;
-    if colour_get_value (col) &lt; 128
+    if (colour_get_value(colour) &lt; 128)
     {
         maxHspeed = 0.15;
     }
-    if colour_get_value (col) &lt; 64
+    if (colour_get_value(colour) &lt; 64)
     {
         maxHspeed = 0.17;
     }
 }
-if y &lt; room_height / 3 
+if ( y &lt; (room_height/3) )
 { 
     HVel = 0.03;
     maxHspeed = 0.2;
-    if colour_get_value (col) &lt; 128
+    if (colour_get_value(colour) &lt; 128)
     {
         maxHspeed = 0.05;
     }
-    if colour_get_value (col) &lt; 64
+    if (colour_get_value(colour) &lt; 64)
     {
         maxHspeed = 0.07;
     }
 }
 
-if global.depthCount &lt; global.finale
+if (global.depthCount &lt; global.finale)
 {
-    if keyboard_check(vk_left) and hspeed &lt; maxHspeed
+    if ( keyboard_check(vk_left) and (hspeed &lt; maxHspeed) )
     {
         hspeed += HVel;
     }
     
-    else if keyboard_check(vk_right) and hspeed &gt; -maxHspeed
+    else if ( keyboard_check(vk_right) and (hspeed &gt; -maxHspeed) )
     {
         hspeed -= HVel;
     }
     
-    else if hspeed &gt; 0
+    else if (hspeed &gt; 0)
     {
         hspeed -= decel;
-        if hspeed &lt; 0
+        if (hspeed &lt; 0)
         {
             hspeed = 0;
         }
     }
     
-    else if hspeed &lt; 0
+    else if (hspeed &lt; 0)
     {
         hspeed += decel;
-        if hspeed &gt; 0
+        if (hspeed &gt; 0)
         {
             hspeed = 0;
         }
     }
     
-    if hspeed == 0
+    if (hspeed == 0)
     {
         hspeed += velAdd;
     }
     
-    if keyboard_check (vk_up) and vspeed &lt; -0.1
+    if ( keyboard_check (vk_up) and (vspeed &lt; -0.1) )
     {
         vspeed += VVel;
     }
-    else if vspeed &gt; -maxVspeed
+    else if (vspeed &gt; -maxVspeed)
     {
         vspeed -= VVel;
     }
 }
 
-if global.depthCount &gt; global.mid
+if (global.depthCount &gt; global.mid)
 {
     maxVspeed = 0.1;
 }
 
-if global.depthCount &gt; global.finale and vspeed != 0
+if ( (global.depthCount &gt; global.finale) and (vspeed != 0) )
 {
     vspeed = 0;
 }

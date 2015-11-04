@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
+  <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>screenInit();
+            <string>///Screen Init
+screen = -1;
+shake = 0;
 </string>
           </argument>
         </arguments>
@@ -48,7 +50,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>screenEnd();
+            <string>/// Reset Drawing to Screen
+surface_reset_target();
+draw_surface_ext(screen, shake, shake, 1, 1, 0, c_white, 1); // Draws the screen surface, which has had all the objects' images written to it during normal draw event
 </string>
           </argument>
         </arguments>
@@ -71,7 +75,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>screenBegin();
+            <string>/// Set Drawing to Surface
+
+// If the screen surface is destroyed (b/c of alt+enter for example) then:
+// Re-create the screen surface
+
+if !surface_exists(screen)
+{
+    screen = surface_create(room_width, room_height);
+}
+
+// If the screen surface does exist, then:
+// Clear the screen of last step's images, 
+surface_set_target(screen);
+draw_clear(0);  // Removing draw_clear makes this into a painting game!
 </string>
           </argument>
         </arguments>

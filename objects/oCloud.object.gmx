@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-10</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>size = random (4) - 1;
+            <string>///Inits
+colour = c_white;
+size = random(4) - 1;
 vspeed = -2;
 instance_create (x + 3, y, oCloud2);
 </string>
@@ -50,10 +52,8 @@ instance_create (x + 3, y, oCloud2);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>surface_set_target(global.screen);
-    draw_set_colour(c_white);
-    draw_circle(x, y, global.scale + size, false);
-surface_reset_target();
+            <string>///Draw
+draw_circle_colour(x, y, global.scale + size, colour, colour, false);
 </string>
           </argument>
         </arguments>

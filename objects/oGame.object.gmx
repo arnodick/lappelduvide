@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create (room_width/2, room_height/2 - 10, oPlayer);
+            <string>///Inits
+draw_set_font(fontTitle);
+instance_create (room_width/2, room_height/2 - 10, oPlayer);
 instance_create (0, 0, oTitle);
 count = 0;
 countDown = 5000;
@@ -34,7 +36,7 @@ global.scale = 3;
 global.mid = 7000;
 global.finale = 8000;
 bgcol = make_colour_hsv(120, 255, global.depthCount);
-draw_set_circle_precision(3);
+draw_set_circle_precision(4);
 </string>
           </argument>
         </arguments>
@@ -57,14 +59,17 @@ draw_set_circle_precision(3);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if keyboard_check_pressed(vk_escape) 
+            <string>///Game controls
+bgcol = make_colour_hsv(110, 220, countDown / 50);
+
+if (keyboard_check_pressed(vk_escape) )
 {
     game_end();
 }
 
-if global.start == false
+if (global.start == false)
 {
-    if (random (10) &lt; 3) 
+    if (random(10) &lt; 3) 
     {
         instance_create (irandom(room_width), room_height, oCloud);
     }
@@ -72,33 +77,38 @@ if global.start == false
 
 else
 {
-    if (random (10) &lt; 3) and count &gt;= countDown / 100 and global.depthCount &lt; global.finale and global.depthCount &gt; 200
+    if ( (random(10) &lt; 3) and (count &gt;= (countDown/100)) and (global.depthCount &lt; global.finale) and (global.depthCount &gt; 200) )
     {
         instance_create (irandom(room_width), room_height, oBlocky);
-        if keyboard_check(vk_left or vk_right)
+        if ( keyboard_check(vk_left) or keyboard_check(vk_right) )
         {
             instance_create (0, irandom(room_height), oBlocky);
             instance_create (room_width, irandom(room_height), oBlocky);
         }
         count = 0;
     }
-    else if count &lt; countDown / 100
+    else if (count &lt; (countDown / 100) )
     {
         count += 1;
     }
-    if countDown &gt; 0
+    if (countDown &gt; 0)
     {
         countDown -= 1;
     }
     global.depthCount += 1;
-    if global.depthCount &gt; 7500 and !instance_exists(oPlayer)
+    if ( (global.depthCount &gt; 7500) and (!instance_exists(oPlayer)) )
     {
         instance_create (0, 0, oEndtitle);
     }
 }
 
-instance_deactivate_region(0, 0, room_width, room_height, false, true);
-instance_activate_region(view_xview[0], view_yview[0], view_wview[0], view_hview[0], true);
+with (all)
+if (y &lt; 0)
+{
+    instance_destroy();
+}
+//instance_deactivate_region(-20, -20, room_width + 20, room_height + 20, false, true);
+//instance_activate_region(view_xview[0], view_yview[0], view_wview[0], view_hview[0], true);
 
 </string>
           </argument>
@@ -122,11 +132,9 @@ instance_activate_region(view_xview[0], view_yview[0], view_wview[0], view_hview
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>surface_set_target(global.screen);
-    bgcol = make_colour_hsv(110, 220, countDown / 50);
-    draw_set_colour(bgcol);
-    draw_rectangle(0, 0, room_width, room_height, false);
-surface_reset_target();
+            <string>///Draw
+
+draw_rectangle_colour(0, 0, room_width, room_height, bgcol, bgcol, bgcol, bgcol, false);
 </string>
           </argument>
         </arguments>

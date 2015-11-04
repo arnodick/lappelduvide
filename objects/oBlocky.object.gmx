@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>///Inits
+event_inherited();
 velAdd = random(0.4) - 0.2;
 size = random (2) - 1;
 babies = random (9) + 3;
@@ -43,11 +44,11 @@ else
 fade = irandom(255);
 hue = irandom(64) + 128;
 
-col = make_colour_hsv(hue, 255, fade);
+colour = make_colour_hsv(hue, 255, fade);
 
 //pop = audio_play_sound(sPop, 1, false);
 
-if colour_get_value(col) &lt; 127
+if colour_get_value(colour) &lt; 127
 {
     depth = 1000;
     maxHspeed = 0.1;
@@ -78,23 +79,24 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>///Controller
+event_inherited();
 
-if ( collision_circle (x, y, global.scale + size, oPlayer, false, true) or collision_circle (x, y, global.scale + size, oBlockybaby, false, true) ) and depth == 1
+if ( ( (collision_circle(x, y, global.scale + size, oPlayer, false, true)) or (collision_circle(x, y, global.scale + size, oBlockybaby, false, true)) ) and depth == 1 )
 {
-    instance_destroy();
-    pop = audio_sound_pitch(sPop, random(pitchMax) + 0.05);
-    audio_play_sound(pop, 1, false);
-    while num &lt; babies
+    pop = audio_play_sound(sPop, 1, false);
+    audio_sound_pitch(pop, random(pitchMax) + 0.05);
+    while (num &lt; babies)
     {
         instance_create (x, y, oBlockybaby);
         num += 1;
     }
+    instance_destroy();
 }
-if global.depthCount &gt; global.mid and fade &gt; 0
+if ( (global.depthCount &gt; global.mid) and (fade &gt; 0) )
 {
     fade -= 1;
-    col = make_colour_hsv(hue, 255, fade);
+    colour = make_colour_hsv(hue, 255, fade);
 }
 </string>
           </argument>
@@ -118,10 +120,9 @@ if global.depthCount &gt; global.mid and fade &gt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>surface_set_target(global.screen);
-    draw_set_colour(col);
-    draw_circle(x, y, global.scale + size, false);
-surface_reset_target();
+            <string>///Draw
+
+draw_circle_colour(x, y, global.scale + size, colour, colour, false);
 </string>
           </argument>
         </arguments>

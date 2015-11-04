@@ -25,14 +25,14 @@
     <font>fonts\fontTitle</font>
   </fonts>
   <objects name="objects">
-    <object>objects\oPlayer</object>
-    <object>objects\oBlocky</object>
-    <object>objects\oBlockybaby</object>
     <object>objects\oScreen</object>
-    <object>objects\oCreature</object>
     <object>objects\oGame</object>
     <object>objects\oTitle</object>
     <object>objects\oEndtitle</object>
+    <object>objects\oPlayer</object>
+    <object>objects\oCreature</object>
+    <object>objects\oBlocky</object>
+    <object>objects\oBlockybaby</object>
     <object>objects\oCloud</object>
     <object>objects\oCloud2</object>
   </objects>
