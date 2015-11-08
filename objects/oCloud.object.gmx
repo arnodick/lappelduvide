@@ -27,9 +27,9 @@
             <kind>1</kind>
             <string>///Inits
 colour = c_white;
-size = random(4) - 1;
+size = random_range(4, 16);
 vspeed = -2;
-instance_create (x + 3, y, oCloud2);
+instance_create (x + choose(-size, size), y, oCloud2);
 </string>
           </argument>
         </arguments>
@@ -53,7 +53,8 @@ instance_create (x + 3, y, oCloud2);
           <argument>
             <kind>1</kind>
             <string>///Draw
-draw_circle_colour(x, y, global.scale + size, colour, colour, false);
+//draw_circle_colour(x, y, global.scale + size, colour, colour, false);
+draw_ellipse_colour(x, y, x + global.scale + size, y + (global.scale + size)/1.5, colour, colour, false);
 </string>
           </argument>
         </arguments>

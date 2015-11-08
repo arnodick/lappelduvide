@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>///Draw
-draw_text_colour(10, 10, "L'APPEL DU VIDE", c_red, c_red, c_red, c_red, 1);
+draw_text_colour(room_width/2, 10, "L'APPEL DU VIDE", c_red, c_red, c_red, c_red, 1);
 </string>
           </argument>
         </arguments>

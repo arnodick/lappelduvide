@@ -28,7 +28,7 @@
             <string>///Inits
 colour = make_colour_hsv(160, 210, 255);
 move = 0;
-count = 0;
+count = 0;  //timer starts when game starts, moves sky up
 global.start = false;
 audio_play_sound (sWind, 2, true);
 </string>
@@ -62,6 +62,7 @@ if (keyboard_check_pressed (vk_up) or keyboard_check_pressed (vk_down) or keyboa
 }
 else if (global.start == true)
 {
+    //once game starts, start moving sky away after 60 steps
     count += 1;
     if count &gt; 60
     {
@@ -70,8 +71,13 @@ else if (global.start == true)
 }
 if (move == (room_height/2) )
 {
+    //make splash noise when hit water
     audio_stop_sound(sWind);
     audio_play_sound(sSplash, 3, false);
+    repeat(8)
+    {
+        instance_create(room_width/2, room_height/2, oSplash);
+    }
 }
 
 if (move &gt; room_height)
@@ -105,7 +111,10 @@ if (move &gt; room_height)
 draw_rectangle_colour(0, 0 - move, room_width, room_height - move, colour, colour, colour, colour, false);
 if (global.start == false)
 {
-    draw_text_colour(10, 10, "L'APPEL DU VIDE", c_red, c_red, c_red, c_red, 1);
+    draw_text_colour(room_width/2, 10, "L'APPEL DU VIDE", c_red, c_red, c_red, c_red, 1);
+    draw_set_font(fontText);
+    draw_text_colour(room_width/2, room_height/2, "Arrow keys", c_maroon, c_maroon, c_maroon, c_maroon, 1);
+    draw_set_font(fontTitle);
 }
 </string>
           </argument>

@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-10</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,10 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Inits
-colour = c_white;
-size = random_range(2,8);
-vspeed = -2;
+            <string>///INITS
+vspeed = -2 - random(2);
+hspeed = random_range(-2, 2);
+size = random (0.5) - 0.25;
+colour = make_colour_hsv(110, 220, 100);
 </string>
           </argument>
         </arguments>
@@ -51,9 +52,8 @@ vspeed = -2;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Draw
-//draw_circle_colour(x, y, global.scale + size, colour, colour, false);
-draw_ellipse_colour(x, y, x + global.scale + size, y + (global.scale + size)/1.5, colour, colour, false);
+            <string>///DRAW
+draw_circle_colour(x, y, global.scale + size, colour, colour, false);
 </string>
           </argument>
         </arguments>

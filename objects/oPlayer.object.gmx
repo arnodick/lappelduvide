@@ -55,22 +55,20 @@ if      ( (keyboard_check(vk_left) == true) and (rot &lt; 90) )
 {
     rot += 45;
 }
-
 else if ( (keyboard_check(vk_right) == true) and (rot &gt; -90) )
 {
     rot -= 45;
 }
-
-else if ( (keyboard_check(vk_down) == true) and (rot &lt; 180) )
+if ( (keyboard_check(vk_down) == true) and (rot &lt; 180) )
 {
     rot += 45;
 }
-
 else if ( (keyboard_check(vk_up) == true) and (rot &gt; 0) )
 {
     rot -= 45;
 }
 
+//drop off bottom of screen at end
 if (global.depthCount &gt; global.finale)
 {
     vspeed = 0.2;

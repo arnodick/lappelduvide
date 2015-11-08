@@ -11,18 +11,16 @@
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\sPlayer</sprite>
+    <sprite>sprites\sBlocky</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
   </backgrounds>
   <paths name="paths"/>
-  <scripts name="scripts">
-    <script>scripts\screenInit.gml</script>
-    <script>scripts\screenBegin.gml</script>
-    <script>scripts\screenEnd.gml</script>
-  </scripts>
+  <scripts name="scripts"/>
   <fonts name="fonts">
     <font>fonts\fontTitle</font>
+    <font>fonts\fontText</font>
   </fonts>
   <objects name="objects">
     <object>objects\oScreen</object>
@@ -35,6 +33,7 @@
     <object>objects\oBlockybaby</object>
     <object>objects\oCloud</object>
     <object>objects\oCloud2</object>
+    <object>objects\oSplash</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rLevel</room>

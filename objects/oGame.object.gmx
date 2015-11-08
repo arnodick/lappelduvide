@@ -27,16 +27,20 @@
             <kind>1</kind>
             <string>///Inits
 draw_set_font(fontTitle);
+draw_set_circle_precision(8);
+draw_set_halign(fa_center);
+
 instance_create (room_width/2, room_height/2 - 10, oPlayer);
 instance_create (0, 0, oTitle);
-count = 0;
-countDown = 5000;
+
 global.depthCount = 0;
 global.scale = 3;
-global.mid = 7000;
-global.finale = 8000;
+global.mid = 5000;
+global.finale = 6500;
+
+count = 0;  //counter to spawn oBlockys. gets shorter as countDown decs
+countDown = 5000;   //sets background colour. lower this is, more often blockys spawn
 bgcol = make_colour_hsv(120, 255, global.depthCount);
-draw_set_circle_precision(4);
 </string>
           </argument>
         </arguments>
@@ -62,11 +66,6 @@ draw_set_circle_precision(4);
             <string>///Game controls
 bgcol = make_colour_hsv(110, 220, countDown / 50);
 
-if (keyboard_check_pressed(vk_escape) )
-{
-    game_end();
-}
-
 if (global.start == false)
 {
     if (random(10) &lt; 3) 
@@ -74,10 +73,9 @@ if (global.start == false)
         instance_create (irandom(room_width), room_height, oCloud);
     }
 }
-
 else
 {
-    if ( (random(10) &lt; 3) and (count &gt;= (countDown/100)) and (global.depthCount &lt; global.finale) and (global.depthCount &gt; 200) )
+    if ( (random(10) &lt; 3) and (count &gt; (countDown/100)) and (global.depthCount &lt; global.finale) and (global.depthCount &gt; 200) )
     {
         instance_create (irandom(room_width), room_height, oBlocky);
         if ( keyboard_check(vk_left) or keyboard_check(vk_right) )
@@ -87,7 +85,7 @@ else
         }
         count = 0;
     }
-    else if (count &lt; (countDown / 100) )
+    else if (count &lt;= (countDown / 100) )
     {
         count += 1;
     }
@@ -96,19 +94,24 @@ else
         countDown -= 1;
     }
     global.depthCount += 1;
-    if ( (global.depthCount &gt; 7500) and (!instance_exists(oPlayer)) )
+    if ( (global.depthCount &gt; global.mid) and (!instance_exists(oPlayer)) )
     {
         instance_create (0, 0, oEndtitle);
     }
 }
 
 with (all)
-if (y &lt; 0)
 {
-    instance_destroy();
+    if ( (y &lt; -1) or (y &gt; room_height + 1) or (x &lt; -1) or (x &gt; room_width + 1) )
+    {
+        instance_destroy();
+    }
 }
-//instance_deactivate_region(-20, -20, room_width + 20, room_height + 20, false, true);
-//instance_activate_region(view_xview[0], view_yview[0], view_wview[0], view_hview[0], true);
+
+if (keyboard_check_pressed(vk_escape) )
+{
+    game_end();
+}
 
 </string>
           </argument>
@@ -135,6 +138,7 @@ if (y &lt; 0)
             <string>///Draw
 
 draw_rectangle_colour(0, 0, room_width, room_height, bgcol, bgcol, bgcol, bgcol, false);
+//draw_text_colour(32, 32, "FPS = " + string(fps), c_red, c_red, c_red, c_red, 1);
 </string>
           </argument>
         </arguments>
