@@ -74,6 +74,7 @@ if (move == (room_height/2) )
     //make splash noise when hit water
     audio_stop_sound(sWind);
     audio_play_sound(sSplash, 3, false);
+    audio_play_sound(sAmbience,4 , true);
     repeat(8)
     {
         instance_create(room_width/2, room_height/2, oSplash);

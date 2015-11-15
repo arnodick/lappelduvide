@@ -8,6 +8,7 @@
     <sound>sound\sPop</sound>
     <sound>sound\sWind</sound>
     <sound>sound\sSplash</sound>
+    <sound>sound\sAmbience</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\sPlayer</sprite>
@@ -17,7 +18,10 @@
     <background>background\background0</background>
   </backgrounds>
   <paths name="paths"/>
-  <scripts name="scripts"/>
+  <scripts name="scripts">
+    <script>scripts\move_init.gml</script>
+    <script>scripts\move_creature.gml</script>
+  </scripts>
   <fonts name="fonts">
     <font>fonts\fontTitle</font>
     <font>fonts\fontText</font>
