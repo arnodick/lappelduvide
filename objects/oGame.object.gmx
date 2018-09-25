@@ -107,12 +107,12 @@ with (all)
         instance_destroy();
     }
 }
-
+/*
 if (keyboard_check_pressed(vk_escape) )
 {
     game_end();
 }
-
+*/
 </string>
           </argument>
         </arguments>
